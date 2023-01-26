@@ -55,11 +55,14 @@ function decode(expr) {
     )
 
     replacedArr.forEach( (item) => {
-        uncodedArray.push(MORSE_TABLE[item]);
+        if (item != ' ') {
+            uncodedArray.push(MORSE_TABLE[item]);
+        } else {
+            uncodedArray.push(' ');
+        }
     });
 
-    let newArray = uncodedArray.toString();
-    return newArray.replace(/,,/g, ' ').replace(/,/g, '');
+    return uncodedArray.join('');
 }
 
 module.exports = {
